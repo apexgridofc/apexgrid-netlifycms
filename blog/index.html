@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Apex Grid - SEO Local e Google Meu Negócio</title>
+    
+    <!-- Meta tags para SEO -->
+    <meta name="description" content="Blog da Apex Grid com dicas, estratégias e novidades sobre SEO local, Google Meu Negócio e marketing digital para negócios locais.">
+    <meta name="keywords" content="SEO local, Google Meu Negócio, marketing digital, blog, dicas de SEO, André Guerra">
+    <meta name="author" content="André Guerra">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../assets/favicon/site.webmanifest">
+    <meta name="theme-color" content="#082c65">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://apexgrid.com.br/blog/">
+    <meta property="og:title" content="Blog | Apex Grid - SEO Local e Google Meu Negócio">
+    <meta property="og:description" content="Blog da Apex Grid com dicas, estratégias e novidades sobre SEO local, Google Meu Negócio e marketing digital para negócios locais.">
+    <meta property="og:image" content="../images/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://apexgrid.com.br/blog/">
+    <meta property="twitter:title" content="Blog | Apex Grid - SEO Local e Google Meu Negócio">
+    <meta property="twitter:description" content="Blog da Apex Grid com dicas, estratégias e novidades sobre SEO local, Google Meu Negócio e marketing digital para negócios locais.">
+    <meta property="twitter:image" content="../images/og-image.jpg">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/sections.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* Estilos específicos para o blog */
+        .blog-header {
+            background: linear-gradient(135deg, var(--hero-gradient-start) 0%, var(--hero-gradient-end) 100%);
+            padding: 100px 0 50px;
+            color: var(--secondary-color);
+            text-align: center;
+            position: relative;
+        }
+        
+        .blog-header:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('../images/analytics-dashboard.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: 1;
+        }
+        
+        .blog-header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .blog-title {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .blog-description {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .blog-content {
+            padding: 80px 0;
+        }
+        
+        .blog-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 50px;
+        }
+        
+        .blog-main {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .blog-sidebar {
+            position: sticky;
+            top: 100px;
+        }
+        
+        .sidebar-widget {
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .widget-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .widget-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color-1);
+        }
+        
+        .search-form {
+            display: flex;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid var(--medium-gray);
+            border-radius: 5px 0 0 5px;
+            font-size: 1rem;
+        }
+        
+        .search-button {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+        
+        .categories-list, .recent-posts-list {
+            list-style: none;
+        }
+        
+        .categories-list li, .recent-posts-list li {
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+        
+        .categories-list li:last-child, .recent-posts-list li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .categories-list a, .recent-posts-list a {
+            color: var(--dark-gray);
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .categories-list a:hover, .recent-posts-list a:hover {
+            color: var(--accent-color-1);
+            padding-left: 5px;
+        }
+        
+        .categories-list .count {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            padding: 2px 8px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        
+        .pagination a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            margin: 0 5px;
+            border-radius: 5px;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            transition: all 0.3s ease;
+        }
+        
+        .pagination a:hover, .pagination a.active {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+        
+        @media (max-width: 992px) {
+            .blog-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .blog-sidebar {
+                position: static;
+                margin-top: 50px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .blog-title {
+                font-size: 2.5rem;
+            }
+            
+            .blog-description {
+                font-size: 1.1rem;
+            }
+            
+            .blog-content {
+                padding: 50px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="../index.html" class="logo">
+                <img src="../images/logo-blue.jpg" alt="Apex Grid Logo">
+            </a>
+            
+            <div class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#sobre">Sobre</a></li>
+                <li><a href="../index.html#servicos">Serviços</a></li>
+                <li><a href="../index.html#resultados">Resultados</a></li>
+                <li><a href="index.html" class="active">Blog</a></li>
+                <li><a href="../index.html#contato">Contato</a></li>
+            </ul>
+        </div>
+    </header>
+    
+    <!-- Blog Header -->
+    <section class="blog-header">
+        <div class="container blog-header-content">
+            <h1 class="blog-title">Blog da Apex Grid</h1>
+            <p class="blog-description">Dicas, estratégias e novidades sobre SEO local, Google Meu Negócio e marketing digital para impulsionar seu negócio local</p>
+        </div>
+    </section>
+    
+    <!-- Blog Content -->
+    <section class="blog-content">
+        <div class="container">
+            <div class="blog-layout">
+                <div class="blog-main">
+                    <!-- Artigo 1 -->
+                    <div class="blog-card fade-in">
+                        <div class="blog-image">
+                            <img src="../images/blog/google-meu-negocio.jpg" alt="Como otimizar seu Google Meu Negócio">
+                        </div>
+                        <div class="blog-content">
+                            <span class="blog-category">Google Meu Negócio</span>
+                            <h3 class="blog-title">Como otimizar seu Google Meu Negócio para atrair mais clientes locais</h3>
+                            <p class="blog-excerpt">Descubra as melhores práticas para otimizar seu perfil no Google Meu Negócio e aumentar sua visibilidade nas buscas locais.</p>
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> 15 Abr, 2025</span>
+                                <span><i class="far fa-clock"></i> 8 min de leitura</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Artigo 2 -->
+                    <div class="blog-card fade-in">
+                        <div class="blog-image">
+                            <img src="../images/blog/seo-local.jpg" alt="Estratégias de SEO Local">
+                        </div>
+                        <div class="blog-content">
+                            <span class="blog-category">SEO Local</span>
+                            <h3 class="blog-title">5 estratégias de SEO Local que todo negócio precisa implementar em 2025</h3>
+                            <p class="blog-excerpt">Conheça as estratégias mais eficientes de SEO Local para garantir que seu negócio seja encontrado por clientes da sua região.</p>
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> 10 Abr, 2025</span>
+                                <span><i class="far fa-clock"></i> 6 min de leitura</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Artigo 3 -->
+                    <div class="blog-card fade-in">
+                        <div class="blog-image">
+                            <img src="../images/blog/automacao-ia.jpg" alt="Automação com IA">
+                        </div>
+                        <div class="blog-content">
+                            <span class="blog-category">Automação</span>
+                            <h3 class="blog-title">Como usar a Inteligência Artificial para automatizar seu marketing local</h3>
+                            <p class="blog-excerpt">Aprenda a implementar soluções de automação com IA para otimizar processos e melhorar a experiência do cliente.</p>
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> 5 Abr, 2025</span>
+                                <span><i class="far fa-clock"></i> 10 min de leitura</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Artigo 4 -->
+                    <div class="blog-card fade-in">
+                        <div class="blog-image">
+                            <img src="../images/blog/avaliacao-clientes.jpg" alt="Avaliações de clientes">
+                        </div>
+                        <div class="blog-content">
+                            <span class="blog-category">Reputação Online</span>
+                            <h3 class="blog-title">O impacto das avaliações de clientes no seu posicionamento local</h3>
+                            <p class="blog-excerpt">Entenda como as avaliações de clientes influenciam seu posicionamento nas buscas locais e como gerenciá-las eficientemente.</p>
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> 1 Abr, 2025</span>
+                                <span><i class="far fa-clock"></i> 7 min de leitura</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Artigo 5 -->
+                    <div class="blog-card fade-in">
+                        <div class="blog-image">
+                            <img src="../images/blog/conteudo-local.jpg" alt="Conteúdo local">
+                        </div>
+                        <div class="blog-content">
+                            <span class="blog-category">Conteúdo</span>
+                            <h3 class="blog-title">Como criar conteúdo local relevante para sua estratégia de SEO</h3>
+                            <p class="blog-excerpt">Descubra como desenvolver conteúdo otimizado para SEO focado em palavras-chave locais que convertem visitantes em clientes.</p>
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> 25 Mar, 2025</span>
+                                <span><i class="far fa-clock"></i> 9 min de leitura</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Artigo 6 -->
+                    <div class="blog-card fade-in">
+                        <div class="blog-image">
+                            <img src="../images/blog/analytics.jpg" alt="Google Analytics">
+                        </div>
+                        <div class="blog-content">
+                            <span class="blog-category">Análise de Dados</span>
+                            <h3 class="blog-title">Métricas essenciais para acompanhar o sucesso do seu SEO Local</h3>
+                            <p class="blog-excerpt">Conheça as principais métricas que você deve monitorar para avaliar a eficácia da sua estratégia de SEO Local.</p>
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> 20 Mar, 2025</span>
+                                <span><i class="far fa-clock"></i> 8 min de leitura</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="blog-sidebar">
+                    <!-- Widget de Busca -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Buscar</h3>
+                        <form class="search-form">
+                            <input type="text" class="search-input" placeholder="Buscar no blog...">
+                            <button type="submit" class="search-button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- Widget de Categorias -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Categorias</h3>
+                        <ul class="categories-list">
+                            <li><a href="#">SEO Local <span class="count">12</span></a></li>
+                            <li><a href="#">Google Meu Negócio <span class="count">8</span></a></li>
+                            <li><a href="#">Automação com IA <span class="count">6</span></a></li>
+                            <li><a href="#">Conteúdo Estratégico <span class="count">9</span></a></li>
+                            <li><a href="#">Reputação Online <span class="count">5</span></a></li>
+                            <li><a href="#">Análise de Dados <span class="count">7</span></a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Widget de Posts Recentes -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Posts Recentes</h3>
+                        <ul class="recent-posts-list">
+                            <li><a href="#">Como otimizar seu Google Meu Negócio para atrair mais clientes locais</a></li>
+                            <li><a href="#">5 estratégias de SEO Local que todo negócio precisa implementar em 2025</a></li>
+                            <li><a href="#">Como usar a Inteligência Artificial para automatizar seu marketing local</a></li>
+                            <li><a href="#">O impacto das avaliações de clientes no seu posicionamento local</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Widget de Tags -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Tags</h3>
+                        <div class="tags-cloud">
+                            <a href="#" style="font-size: 1.2rem; color: var(--primary-color);">SEO Local</a>
+                            <a href="#" style="font-size: 1rem; color: var(--accent-color-1);">Google Meu Negócio</a>
+                            <a href="#" style="font-size: 0.9rem; color: var(--bg-color-1);">Marketing Digital</a>
+                            <a href="#" style="font-size: 1.1rem; color: var(--accent-color-2);">Automação</a>
+                            <a href="#" style="font-size: 0.8rem; color: var(--primary-color);">IA</a>
+                            <a href="#" style="font-size: 1rem; color: var(--accent-color-1);">Conteúdo</a>
+                            <a href="#" style="font-size: 0.9rem; color: var(--bg-color-2);">Avaliações</a>
+                            <a href="#" style="font-size: 1.1rem; color: var(--accent-color-2);">Local</a>
+                            <a href="#" style="font-size: 0.8rem; color: var(--primary-color);">Analytics</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Paginação -->
+            <div class="pagination">
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#"><i class="fas fa-angle-right"></i></a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-about">
+                <a href="../index.html" class="footer-logo">
+                    <img src="../images/logo-white.jpg" alt="Apex Grid Logo">
+                </a>
+                <p>Consultoria especializada em SEO local e Google Meu Negócio para negócios locais. Atraia mais clientes diretamente pelo Google com estratégias de posicionamento orgânico.</p>
+                
+                <div class="social-icons">
+                    <a href="https://linkedin.com/in/andreguerrabento" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://instagram.com/andreguerradogoogle" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3 class="footer-heading">Links Rápidos</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#sobre">Sobre</a></li>
+                    <li><a href="../index.html#servicos">Serviços</a></li>
+                    <li><a href="../index.html#resultados">Resultados</a></li>
+                    <li><a href="index.html">Blog</a></li>
+                    <li><a href="../index.html#contato">Contato</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3 class="footer-heading">Serviços</h3>
+                <ul>
+                    <li><a href="../index.html#servicos">SEO Local</a></li>
+                    <li><a href="../index.html#servicos">Google Meu Negócio</a></li>
+                    <li><a href="../index.html#servicos">Automação com IA</a></li>
+                    <li><a href="../index.html#servicos">Conteúdo Estratégico</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h3 class="footer-heading">Contato</h3>
+                <ul>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span>+55 11 93458-6060</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>apexgridofc@gmail.com</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Rua Tenente Antônio Batista, 137 – Centro, Piracaia/SP</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom container">
+            <p>&copy; 2025 Apex Grid. Todos os direitos reservados. CNPJ: XX.XXX.XXX/0001-XX</p>
+        </div>
+    </footer>
+    
+    <!-- WhatsApp Float -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/5511934586060" class="whatsapp-button" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <div class="whatsapp-tooltip">Fale comigo no WhatsApp!</div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    
+    <!-- Espaço para Google Analytics -->
+    <script>
+        // Código do Google Analytics será inserido aqui
+    </script>
+</body>
+</html>

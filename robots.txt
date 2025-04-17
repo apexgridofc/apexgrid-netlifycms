@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Permitir acesso a todas as páginas
+Disallow: /assets/
+Disallow: /admin/
+
+# Sitemap
+Sitemap: https://apexgrid.com.br/sitemap.xml

@@ -1,0 +1,193 @@
+/* Estilos base para o site da Apex Grid - Versão 2 */
+
+/* Importação de fontes */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Variáveis de cores da paleta extraída */
+:root {
+    /* Cores principais */
+    --primary-color: #06295e;      /* Azul escuro do logo */
+    --secondary-color: #ffffff;    /* Branco */
+    
+    /* Cores de destaque do escritório */
+    --accent-color-1: #cd7647;     /* Laranja do grafite */
+    --accent-color-2: #6f8d9e;     /* Azul acinzentado */
+    --accent-color-3: #c5d7d9;     /* Azul muito claro */
+    
+    /* Cores de fundo da foto do André */
+    --bg-color-1: #153e73;         /* Azul médio */
+    --bg-color-2: #5d448c;         /* Roxo */
+    
+    /* Cores neutras */
+    --light-gray: #f5f5f5;
+    --medium-gray: #e0e0e0;
+    --dark-gray: #333333;
+    
+    /* Cores adicionais para elementos específicos */
+    --hero-gradient-start: #153e73;  /* Azul da foto */
+    --hero-gradient-end: #5d448c;    /* Roxo da foto */
+    --cta-color: #cd7647;            /* Laranja para botões de ação */
+    --footer-bg: #1d1844;            /* Roxo escuro da foto */
+    
+    /* Fonte principal */
+    --font-primary: 'Poppins', sans-serif;
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--dark-gray);
+    background-color: var(--secondary-color);
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-color-1);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section {
+    padding: 80px 0;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 50px;
+    text-align: center;
+    color: var(--primary-color);
+    position: relative;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--accent-color-1);
+    border-radius: 2px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--bg-color-1);
+    color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary {
+    background-color: var(--accent-color-1);
+    color: var(--secondary-color);
+}
+
+.btn-secondary:hover {
+    background-color: #b86a3e;
+    color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-outline:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Animações e efeitos */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .section {
+        padding: 60px 0;
+    }
+    
+    .section-title {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 50px 0;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section {
+        padding: 40px 0;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .btn {
+        padding: 10px 25px;
+    }
+}

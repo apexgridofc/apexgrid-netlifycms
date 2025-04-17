@@ -1,0 +1,30 @@
+/* Paleta de cores para o site da Apex Grid - Versão 2 */
+
+:root {
+    /* Cores principais */
+    --primary-color: #06295e;      /* Azul escuro do logo - mais adequado que o branco extraído */
+    --secondary-color: #ffffff;    /* Branco */
+    
+    /* Cores de destaque do escritório */
+    --accent-color-1: #cd7647;     /* Laranja do grafite */
+    --accent-color-2: #6f8d9e;     /* Azul acinzentado */
+    --accent-color-3: #c5d7d9;     /* Azul muito claro */
+    
+    /* Cores de fundo da foto do André */
+    --bg-color-1: #153e73;         /* Azul médio */
+    --bg-color-2: #5d448c;         /* Roxo */
+    
+    /* Cores neutras */
+    --light-gray: #f5f5f5;
+    --medium-gray: #e0e0e0;
+    --dark-gray: #333333;
+    
+    /* Cores adicionais para elementos específicos */
+    --hero-gradient-start: #153e73;  /* Azul da foto */
+    --hero-gradient-end: #5d448c;    /* Roxo da foto */
+    --cta-color: #cd7647;            /* Laranja para botões de ação */
+    --footer-bg: #1d1844;            /* Roxo escuro da foto */
+    
+    /* Fonte principal */
+    --font-primary: 'Poppins', sans-serif;
+}
